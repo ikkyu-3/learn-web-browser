@@ -1,6 +1,6 @@
 {
-  "name": "html-test",
-  "version": "1.0.0",
+  "name": "learn-web-browser",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ikkyu-3/html-test.git"
+    "url": "git+https://github.com/ikkyu-3/learn-web-browser.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ikkyu-3/html-test/issues"
+    "url": "https://github.com/ikkyu-3/learn-web-browser/issues"
   },
-  "homepage": "https://github.com/ikkyu-3/html-test#readme",
+  "homepage": "https://github.com/ikkyu-3/learn-web-browser#readme",
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "http-server": "^0.11.1"
   }
 }
