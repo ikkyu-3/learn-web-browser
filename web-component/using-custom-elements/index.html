@@ -1,0 +1,19 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Using custom elements</title>
+  </head>
+  <body>
+    <popup-info comment="test!"></popup-info>
+    <script src="index.js"></script>
+    <script>
+      console.log(document.querySelector("popup-info").shadowRoot);
+      console.log(
+        document.querySelector("popup-info").shadowRoot.querySelector("div")
+          .textContent
+      );
+    </script>
+  </body>
+</html>
