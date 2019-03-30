@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Adding flexibility with slots</title>
+  </head>
+  <body>
+    <template>
+      <p><slot name="my-text">デフォルトテキスト</slot></p>
+    </template>
+    <script>
+      customElements.define(
+        "my-paragraph",
+        class extends HTMLElement {
+          constructor() {
+            super();
+            const template = document.getElementById("my-paragraph");
+            const templateContent = template.content;
+
+            const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(
+              templateContent.cloneNode(true)
+            );
+          }
+        }
+      );
+    </script>
+    <my-paragraph>
+      <span slot="my-text">新しいテキストを代入します</span>
+    </my-paragraph>
+    <my-paragraph>
+      <ul slot="my-text">
+        <li>新しいテキストを代入します</li>
+        <li>リストも代入できる</li>
+      </ul>
+    </my-paragraph>
+  </body>
+</html>

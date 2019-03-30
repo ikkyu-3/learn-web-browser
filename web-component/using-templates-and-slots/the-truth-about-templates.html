@@ -1,0 +1,20 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sample</title>
+  </head>
+  <body>
+    <!-- templateは表示されない -->
+    <template id="my-paragraph">
+      <p>My paragraph</p>
+    </template>
+    <script>
+      const template = document.getElementById("my-paragraph");
+      const templateContent = template.content;
+      document.body.appendChild(templateContent);
+    </script>
+    <!-- JSでここに追加され、表示される -->
+  </body>
+</html>
