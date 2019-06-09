@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/ikkyu-3/learn-web-browser#readme",
   "devDependencies": {
-    "eslint": "5.15.3",
+    "eslint": "5.16.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-google": "0.12.0",
     "eslint-config-prettier": "4.1.0",
