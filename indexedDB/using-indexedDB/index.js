@@ -125,3 +125,54 @@ getRequest.onsuccess = event => {
     console.log("get success: ", e);
   };
 };
+
+/**
+ * 項目を更新
+ */
+const updateRequest = indexedDB.open(dbName);
+updateRequest.onsuccess = event => {
+  const db = event.target.result;
+
+  const objectStore = db
+    .transaction(["customers"], "readwrite")
+    .objectStore("customers");
+
+  const request = objectStore.get("222-22-2222");
+  request.onerror = e => {
+    console.log("update error", e);
+  };
+
+  request.onsuccess = () => {
+    const data = request.result;
+    data.age = 42;
+
+    const req = objectStore.put(data);
+    req.onerror = e => {
+      console.log("put error", e);
+    };
+
+    req.onsuccess = e => {
+      console.log("put success", e);
+    };
+  };
+};
+
+/**
+ * カーソル
+ */
+const cursorRequest = indexedDB.open(dbName);
+cursorRequest.onsuccess = event => {
+  const db = event.target.result;
+
+  const objectStore = db.transaction("customers").objectStore("customers");
+
+  objectStore.openCursor().onsuccess = e => {
+    const cursor = e.target.result;
+    if (cursor) {
+      console.log(cursor);
+      cursor.continue();
+    } else {
+      console.error("No more entries!");
+    }
+  };
+};
