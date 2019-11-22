@@ -169,10 +169,47 @@ cursorRequest.onsuccess = event => {
   objectStore.openCursor().onsuccess = e => {
     const cursor = e.target.result;
     if (cursor) {
-      console.log(cursor);
+      console.log("cursor: ", cursor);
       cursor.continue();
     } else {
       console.error("No more entries!");
+    }
+  };
+};
+
+/**
+ * インデックス
+ */
+const indexRequest = indexedDB.open(dbName);
+indexRequest.onsuccess = event => {
+  const db = event.target.result;
+
+  const objectStore = db.transaction("customers").objectStore("customers");
+
+  const index = objectStore.index("name");
+
+  index.get("Ichiro").onsuccess = e => {
+    console.log("index success", e.target.result);
+  };
+
+  // index: nameは一意でないので、カーソルを使用
+  index.openCursor().onsuccess = e => {
+    const cursor = e.target.result;
+    if (cursor) {
+      console.log("openCursor:: key: ", cursor.key, " value: ", cursor.value);
+    }
+  };
+
+  index.openKeyCursor().onsuccess = e => {
+    const cursor = e.target.result;
+    if (cursor) {
+      console.log(
+        "openKeyCursor:: key: ",
+        cursor.key,
+        " primaryKey: ",
+        cursor.primaryKey
+      );
+      cursor.continue();
     }
   };
 };
